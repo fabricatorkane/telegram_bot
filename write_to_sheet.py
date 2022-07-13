@@ -6,8 +6,7 @@ from googleapiclient.discovery import build
 from oauth2client.service_account import ServiceAccountCredentials
 
 from app import creds
-
-sheet_id = '1LE10RehEQPon2bcAvr3CnYmyZM3Np2EP8P5KF9ZcuPM'
+from app.creds.constants import SHEET_ID
 
 
 """
@@ -56,7 +55,7 @@ def get_values():
 
 # https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/append
 resp = sheet.values().append(
-     spreadsheetId=sheet_id,
+     spreadsheetId=SHEET_ID,
      range="Лист1!A1",
      valueInputOption="RAW",     # аргумент, который отвечает за то, как будут парсится вставленные данные
      # insertDataOption="INSERT_ROWS",     # Есть разница и ее легко увидеть , заполнив таблицу [(1,1,1),(1, ,1),(1,1,1)] , т.е. ячейка B2 свободна и вставлять массив 3*3 в нее. insert_rows - вставит 3 строки целиком, сместив низ таблицы, а OVERWRITE - вставит ровно в B2 а все правее и ниже перезапишет.

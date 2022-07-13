@@ -11,7 +11,7 @@ import httplib2
 from googleapiclient.discovery import build
 from oauth2client.service_account import ServiceAccountCredentials
 
-sheet_id = '1LE10RehEQPon2bcAvr3CnYmyZM3Np2EP8P5KF9ZcuPM'
+from app.creds.constants import SHEET_ID
 
 TOKEN2 = 'test'
 bot = Bot(TOKEN2)
@@ -68,7 +68,7 @@ async def echo(message: types.Message):
     values = [[f'@{user}', message.text]]
 
     resp = sheet.values().append(
-        spreadsheetId=sheet_id,
+        spreadsheetId=SHEET_ID,
         range="Лист1!A1",
         valueInputOption="RAW",
         body={'values': values}).execute()

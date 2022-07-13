@@ -5,12 +5,12 @@ import logging
 from aiogram import Bot, Dispatcher, executor, types
 from os import getenv
 from sys import exit
+from app.creds.constants import CHANNEL_ID
 
 bot_token = getenv("TOKEN2")
 if not bot_token:
     exit("Error: no token provided")
 
-CHANNEL_ID = '-1001520206254'
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

@@ -5,8 +5,7 @@ from googleapiclient.discovery import build
 from oauth2client.service_account import ServiceAccountCredentials
 
 from app import creds
-
-sheet_id = '1LE10RehEQPon2bcAvr3CnYmyZM3Np2EP8P5KF9ZcuPM'
+from app.creds.constants import SHEET_ID
 
 
 def get_service_simple():
@@ -35,6 +34,6 @@ sheet = service.spreadsheets()
 # resp = sheet.values().get(spreadsheetId=sheet_id, range="Лист1!A1:A999").execute()
 
 # https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/batchGet
-resp = sheet.values().batchGet(spreadsheetId=sheet_id, ranges=["Лист1", "Лист2"]).execute()   # батчевые методы, которые схлопывают в один запрос несколько действий
+resp = sheet.values().batchGet(spreadsheetId=SHEET_ID, ranges=["Лист1", "Лист2"]).execute()   # батчевые методы, которые схлопывают в один запрос несколько действий
 
 print(resp)
